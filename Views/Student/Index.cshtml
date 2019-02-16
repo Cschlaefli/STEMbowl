@@ -1,0 +1,33 @@
+@model TeamAnswers
+@using stembowl.Models
+@Model.Question.Text
+
+
+<form action="/Student" method="post">
+
+
+
+    
+
+    @Html.HiddenFor(e => e.TeamID)
+    @Html.HiddenFor(e => e.QuestionID)
+    @Html.HiddenFor(e => e.TeamAnswersID)
+
+    @if(Model.Question.Format == Format.MultipleChoice )
+    {
+    
+
+    }else if(Model.Question.Format == Format.TrueFalse)
+    {   
+        
+        <select class="col align-self-center" id="Answer" name="Answer">
+            <option value="True" selected="selected">True</option>
+            <option value="False">False</option>
+        </select>
+    }
+    else
+    {
+
+    }
+    <button type="submit" class="btn btn-primary">Submit Answer</button>
+</form>
