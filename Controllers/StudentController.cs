@@ -12,7 +12,6 @@ using System.Security.Authentication;
 using System.Security.Principal;
 using Shared.Web.MvcExtensions;
 using stembowl.Areas.Identity;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace stembowl.Controllers
@@ -35,6 +34,7 @@ namespace stembowl.Controllers
             var question = _context.TeamAnswers
                 .Where(e => e.TeamID == user.TeamID)
                 .Include(e => e.Question)
+                .ThenInclude(q => q.Answers)
                 .Where(e => String.IsNullOrEmpty(e.Answer))
                 .FirstOrDefault();
 
@@ -45,18 +45,48 @@ namespace stembowl.Controllers
             return View(question);
         }
 
-        public IActionResult EndOfRound()
-        {
-            return View();
-        }
-
         [HttpPost]
         public IActionResult Index(TeamAnswers answers)
         {
+            var correct = _context.Answer
+                .Where(e => e.QuestionID == answers.QuestionID && e.Correct)
+                .FirstOrDefault();
+
+            if (answers.Answer.Equals(correct.Text))
+                answers.Correct = true;
+            else
+                answers.Correct = false;
+
             _context.TeamAnswers.Update(answers);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult EndOfRound()
+        {
+            return View();  
+        }
+
+        public async Task<IActionResult> CheckScore()
+        {
+            double score = 0;
+            
+            var user = await _userContext.GetUserAsync(User);
+            var questions = _context.TeamAnswers
+                .Where(e => e.TeamID == user.TeamID);
+                
+            foreach(var question in questions)
+            {
+                if (question.Correct)
+                score++;
+            }
+
+            double percentage = (score / questions.Count()) * 100 ;
+
+            return View(percentage);  
+        }
+
+        
 
 
     }

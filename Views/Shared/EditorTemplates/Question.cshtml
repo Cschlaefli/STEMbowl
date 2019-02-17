@@ -12,7 +12,7 @@
             @Html.LabelFor(q => q.Format, new { @class="col-lg-2"})
             <select class="col" data-val="true" data-val-required="The Format field is required." id="Format" name="Format">
                 <option value="MultipleChoice" selected="selected">Multiple Choice</option>
-                <!--<option value="ShortAnswer" >Short Answer</option>-->
+                <option value="ShortAnswer" >Short Answer</option>
                 <option value="TrueFalse"> True/False</option>
             </select>
         </div>
@@ -38,7 +38,7 @@
                 @Html.TextBox("textA", "", new { @class="form-control"})
               <div class="input-group-append">
                 <div class="input-group-text">
-                    @Html.CheckBox("boolA", true, new { @class="form-control"})
+                    @Html.CheckBox("boolA", true)
                 </div>
               </div>
             </div>
@@ -46,12 +46,13 @@
         <div class="row">
             <div class="input-group col">
               <div class="input-group-prepend">
-                <div class="input-group-text">B : </div>
+                <div class="input-group-text"> B : </div>
               </div>
                 @Html.TextBox("textB", "", new { @class="form-control"})
               <div class="input-group-append">
                 <div class="input-group-text">
-                    @Html.CheckBox("boolB", false, new { @class="form-control"})
+
+                    @Html.CheckBox("boolB", false )
                 </div>
               </div>
             </div>
@@ -64,7 +65,7 @@
                 @Html.TextBox("textC", "", new { @class="form-control"})
               <div class="input-group-append">
                 <div class="input-group-text">
-                    @Html.CheckBox("boolC", false, new { @class="form-control"})
+                    @Html.CheckBox("boolC", false )
                 </div>
               </div>
             </div>
@@ -77,7 +78,7 @@
                 @Html.TextBox("textD", "", new { @class="form-control"})
               <div class="input-group-append">
                 <div class="input-group-text">
-                    @Html.CheckBox("boolD", false, new { @class="form-control"})
+                    @Html.CheckBox("boolD", false )
                 </div>
               </div>
             </div>

@@ -7,7 +7,8 @@
 
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
-
+<div class="container">
+    
 <hr />
 @if(signInManager.IsSignedIn(User))
 {
@@ -26,8 +27,10 @@
     var isStudent = await userManager.IsInRoleAsync(
             currentUser,
             "Student");
+            
     if(isAdmin)
     {
+
         <li>
             <a asp-controller="ManageUsers" asp-action="Index">
                    Manage Users
@@ -75,3 +78,4 @@
         </p>
     }
 }
+</div>

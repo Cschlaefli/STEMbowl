@@ -1,33 +1,62 @@
 @model TeamAnswers
 @using stembowl.Models
-@Model.Question.Text
-
-
+<!--@Model.Question.Text-->
+<!--@Model.Question-->
+<br />
+<br />
+<div>
 <form action="/Student" method="post">
-
-
-
-    
 
     @Html.HiddenFor(e => e.TeamID)
     @Html.HiddenFor(e => e.QuestionID)
     @Html.HiddenFor(e => e.TeamAnswersID)
-
+<div class="row justify-content-center align-items-center">
+    <h2>@Model.Question.Text</h2>
+</div>
+<div>
     @if(Model.Question.Format == Format.MultipleChoice )
     {
+        <div class="row">
+            <div class="col-md-4"></div>
+            <button class="btn btn-primary col m-3" name="Answer" id="answer" type="submit" value=@Model.Question.Answers.ElementAt(0).Text>@Model.Question.Answers.ElementAt(0).Text</button>
+            <button class="btn btn-primary col m-3" name="Answer" id="answer" type="submit" value=@Model.Question.Answers.ElementAt(1).Text>@Model.Question.Answers.ElementAt(1).Text</button>
+            <div class="col-md-4"></div>        
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <button class="btn btn-primary col m-3" name="Answer" id="answer" type="submit" value=@Model.Question.Answers.ElementAt(2).Text>@Model.Question.Answers.ElementAt(2).Text</button>
+            <button class="btn btn-primary col m-3" name="Answer" id="answer" type="submit" value=@Model.Question.Answers.ElementAt(3).Text>@Model.Question.Answers.ElementAt(3).Text</button>
+            <div class="col-md-4"></div>        
+        </div>
+        <!--<select class="col" id="Answer" name="Answer">-->
+        <!--@for(int i = 0; i < Model.Question.Answers.Count; i++)
+        {
+            <button style="margin: 3%;" class="btn btn-primary" name="Answer" id="answer" type="submit" value=@Model.Question.Answers.ElementAt(i).Text>@Model.Question.Answers.ElementAt(i).Text</button>
+        }-->
+        
+        <!--</select>-->
     
 
     }else if(Model.Question.Format == Format.TrueFalse)
     {   
-        
-        <select class="col align-self-center" id="Answer" name="Answer">
+        <div class="row justify-content-center align-items-center">
+        <select class="col-1 align-self-center" id="Answer" name="Answer">
             <option value="True" selected="selected">True</option>
             <option value="False">False</option>
         </select>
+        <button style="margin: 3%;" type="submit" class="btn btn-primary">Submit Answer</button>
+        </div>
     }
     else
     {
-
+        <br />
+        <div class="row justify-content-center align-items-center">
+            <textarea class="col-6 align-self-center" id="Answer" name="Answer" rows="4" cols="50">
+            </textarea>
+            <button style="margin: 3%;" type="submit" class="btn btn-primary">Submit Answer</button>
+        </div>
+        
     }
-    <button type="submit" class="btn btn-primary">Submit Answer</button>
+        </div>
+        </div>
 </form>
