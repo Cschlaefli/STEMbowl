@@ -2,8 +2,47 @@
 
 <br />
 <br />
-<div class="container">
-    <div class="row justify-content-center align-items-center"><h1>Your team scored @Model%</h1></div>
-</div>
+@if (@Model > 70)
+{
+    <div class="container">
+        <div class="col">
+            <div class="row justify-content-center align-items-center"><h2>Your team scored...</h2></div>
+            <br />
+            <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: @Model%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <br />
+            <div class="row justify-content-center align-items-center"><h1>@Model%</h1></div>
+        </div>
+    </div>
+}else if(@Model < 70 && @Model > 59)
+{
+    <div class="container">
+        <div class="col">
+            <div class="row justify-content-center align-items-center"><h2>Your team scored...</h2></div>
+            <br />
+            <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: @Model%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <br />
+            <div class="row justify-content-center align-items-center"><h1>@Model%</h1></div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="col">
+            <div class="row justify-content-center align-items-center"><h2>Your team scored...</h2></div>
+            <br />
+            <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: @Model%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <br />
+            <div class="row justify-content-center align-items-center"><h1>@Model%</h1></div>
+        </div>
+    </div>
+}
+
 <br />
 <br />

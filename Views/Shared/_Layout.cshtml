@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Stem Bowl</title>
+    <link rel="icon" href="~/favicon.ico">
     <environment include="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -20,36 +21,46 @@
     </environment>  
 </head>
 <body>
-    <br/>
-    <br/>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg  fixed-top">
-            <div class="navbar-header">
+    
+    
+    <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-lg  fixed-top" style="background-color: #4caf50">
+            
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Stem Bowl</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-layout" aria-controls="navbar-layout" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-            </div>
+                </button>
+            
+
             <div class=" collapse navbar-collapse" id="navbar-layout">
-                <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-link"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="nav-link"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li class="nav-link"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                     <partial name="_LoginPartial"/>
             </div>
     </nav>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-
-        </footer>
     </div>
+
+    
+        @RenderBody()
+    
+
+        <footer>
+            <div class="container">
+                <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-bottom">
+                    <a class="navbar-brand" href="#">Change this to credit and link to cade</a>
+                </nav>
+            </div>
+        </footer>
+    
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.slim.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/popper.js/dist/popper.js"></script>
 
     </environment>
     <environment exclude="Development">

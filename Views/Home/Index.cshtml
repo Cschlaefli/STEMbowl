@@ -7,12 +7,30 @@
 
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
-<div class="container">
+
     
-<hr />
+
+<div class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
+    <br />
+    
+        <h1 class="display-4">Hello, @userManager.GetUserName(User)!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+        <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+        </p>
+    
+</div>
 @if(signInManager.IsSignedIn(User))
 {
+    
+
+    <!-- <div class="d-flex justify-content-center">
     <p>Hello @userManager.GetUserName(User)!</p>
+    </div> -->
+            
+
     
     var currentUser = await userManager.GetUserAsync(User);
     var isAdmin = await userManager.IsInRoleAsync(
@@ -27,10 +45,14 @@
     var isStudent = await userManager.IsInRoleAsync(
             currentUser,
             "Student");
+
+            
+            
             
     if(isAdmin)
     {
-
+        <!-- <div class="d-flex">
+        <ul class="list-inline mx-auto justify-content-center">
         <li>
             <a asp-controller="ManageUsers" asp-action="Index">
                    Manage Users
@@ -51,6 +73,8 @@
                 Manage Round
             </a>
         </li>
+        </ul>
+        </div> -->
     }else if(isGrader)
     {
         <li>
@@ -79,3 +103,13 @@
     }
 }
 </div>
+@section Scripts
+{
+    <script>
+    $(document).ready(function() {
+        $(function () {
+  $('[data-toggle="popover"]').popover()
+});
+    });
+    </script>
+}

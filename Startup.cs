@@ -42,8 +42,12 @@ namespace stembowl
             services.AddDbContext<QuestionDbContext>(
                 opt => opt.UseMySql(Configuration.GetConnectionString("connectionString"))
             );
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<QuestionDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<QuestionDbContext>()
+                .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -53,12 +57,16 @@ namespace stembowl
                 options.Password.RequireUppercase = false;
             });
 
+            
+
             services.ConfigureApplicationCookie(options => {
                 options.LoginPath = "/Identity/Account/Login";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -75,10 +83,12 @@ namespace stembowl
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseCookiePolicy();
+            app.UseMvcWithDefaultRoute();
+            
 
             app.UseMvc(routes =>
             {
