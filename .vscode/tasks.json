@@ -10,6 +10,23 @@
                 "${workspaceFolder}/stembowl.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "npm",
+            "script": "css-compile",
+            "path": "wwwroot/lib/bootstrap/",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sass Compile",
+            "type": "shell",
+            "command": "node-sass styles.scss styles.css",
+            "group": "build"
         }
     ]
+    
+
 }
