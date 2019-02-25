@@ -4,3 +4,4 @@
 /wwwroot/node_modules
 /wwwroot/lib/*/
 node_modules
+/wwwroot/package-lock.json
