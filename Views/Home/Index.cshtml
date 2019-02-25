@@ -9,107 +9,376 @@
 @inject UserManager<ApplicationUser> userManager
 
     
-
-<div class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
-    <br />
-    
-        <h1 class="display-4">Hello, @userManager.GetUserName(User)!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-        <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
-        </p>
-    
-</div>
 @if(signInManager.IsSignedIn(User))
 {
-    
-
-    <!-- <div class="d-flex justify-content-center">
-    <p>Hello @userManager.GetUserName(User)!</p>
+    <!-- <div style="background-image: radial-gradient(#bdc3c7, #2c3e50);" class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
+        <div class="container mt-4 text-center">
+            
+            <h1 class="display-4">Hello, @userManager.GetUserName(User)!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+            <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+            </p>
+        </div>
     </div> -->
-            
+<div class="jumbrotron-fluid" id="site-content">
+    <div id="carouselExampleControls" id ="hero" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner d-flex" style="background-image: radial-gradient(#bdc3c7, #2c3e50); width: 100vw; height: 100vh; align-items: center;">
+            <div class="carousel-item active">
+                
+                <div class="container text-center">
+                    
+                    <h1 class="display-4">Hello, @userManager.GetUserName(User)!</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <hr class="my-4">
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <p class="lead">
+                    <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="carousel-item">
+                
+                <div class="container text-center">
+                    
+                    <h1 class="display-4">Welcome to the StemBowl!</h1>
+                    <p class="lead">If you are a student, you can go ahead and register if you'd like, but the StemBowl date is TBA</p>
+                    <hr class="my-4">
+                    <p>If you are faculty here to submit questions for the StemBowl, youre in the right place.</p>
+                    <p class="lead">
+                    <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                    </p>
+                </div>
+                
+            </div>
+            <!-- <div class="carousel-item">
+                <div style="background-image: radial-gradient(#bdc3c7, #2c3e50);" class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
+                    <div class="container text-center">
+                        
+                        <h1 class="display-4">Hello, @userManager.GetUserName(User)!</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <p class="lead">
+                        <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
-    
-    var currentUser = await userManager.GetUserAsync(User);
-    var isAdmin = await userManager.IsInRoleAsync(
-            currentUser,
-            "Admin");
-    var isGrader = await userManager.IsInRoleAsync(
-        currentUser,
-        "Grader");
-    var isFaculty = await userManager.IsInRoleAsync(
-            currentUser,
-            "Faculty");
-    var isStudent = await userManager.IsInRoleAsync(
-            currentUser,
-            "Student");
+    <div class="container">
+        <div class="container  p-5">
+        <div class="row">
 
-            
-            
-            
-    if(isAdmin)
-    {
-        <!-- <div class="d-flex">
-        <ul class="list-inline mx-auto justify-content-center">
-        <li>
-            <a asp-controller="ManageUsers" asp-action="Index">
-                   Manage Users
-            </a>
-        </li>
-        <li>
-            <a asp-controller="Questions" asp-action="Index">
-                   Submit Questions
-            </a>
-        </li>
-        <li>
-            <a asp-controller="Questions" asp-action="GetAll">
-                   Manage Questions
-            </a>
-        </li>
-        <li>
-            <a asp-controller="Round" asp-action="Index">
-                Manage Round
-            </a>
-        </li>
-        </ul>
-        </div> -->
-    }else if(isGrader)
-    {
-        <li>
-            <a asp-controller="Round" asp-action="Index">
-                Manage Round
-            </a>
-        </li> 
-    }
-    else if(isFaculty)
-    {
-        <li>
-            <a asp-controller="Questions" asp-action="Index">
-                   SubmitQuestions
-            </a>
-        </li>
-    }
-    else
-    {
-        <p>Sorry, nothing here for you until the event!
+            <div class="card-deck mb-lg-2 mx-lg-auto">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card mb-sm-4 mx-sm-auto" style="width: 18rem;">
+                        <img class="card-img-top" src="~/images/fjord.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card mx-sm-auto" style="width: 18rem;">
+                        <img class="card-img-top" src="~/images/road.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="~/images/islands.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
 
-        If you are coming here to submit questions, please enter your code 
-                <a asp-area="Identity" asp-page="/Account/Manage/ChangeRole" title="Manage">
-                    here.
-                </a>
-        </p>
-    }
-}
+            <!-- <div class="col-sm-6">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        </div>
+        <div class="row m-sm-4 mt-md-0 pb-5">
+            <div class="col-sm-12 col-md-8 text-sm-center text-md-left">
+                <h1 class="display-4">This is important</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id faucibus justo. Vestibulum malesuada mattis convallis. In vitae nisl aliquam, feugiat arcu at, efficitur nisl. Aenean ornare ex elit, id commodo nulla posuere vitae</p>
+                <p class="lead">
+                <button class="btn btn-outline-primary btn-lg">Button</button>
+                </p>
+            </div>
+            <div class="col-sm-112 col-md-4 col-lg-4 m-auto text-center justify-content-center pt-4 mt-sm-4">
+                <h3 class="mb-4">Widget Menu</h3>
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">test2</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+}
+else
+{
+        // Old jumbotron, should delete, not sure
+        <!-- <div style="background-image: radial-gradient(#2193b0, #6dd5ed);" class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
+            <div class="container mt-4 text-center">
+                
+                <h1 class="display-4">Hello, looks like your new here!</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                <p class="lead">
+                <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                </p>
+            </div>
+        </div>
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+<div class="jumbrotron-fluid" id="site-content">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner d-flex" style="background-image: radial-gradient(#bdc3c7, #2c3e50); width: 100vw; height: 100vh; align-items: center;">
+            <div class="carousel-item active">
+                
+                <div class="container mt-5 text-center">
+                    
+                    <h1 class="display-4">Hello, looks like your new here!</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <hr class="my-4">
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <p class="lead">
+                    <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="carousel-item">
+                
+                <div class="container mt-5 text-center">
+                    
+                    <h1 class="display-4">Hello, looks like your new here!</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <hr class="my-4">
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <p class="lead">
+                    <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                    </p>
+                </div>
+                
+            </div>
+            <!-- <div class="carousel-item">
+                <div style="background-image: radial-gradient(#bdc3c7, #2c3e50);" class="jumbotron jumbrotron-fluid container-fluid col-sm-12">
+                    <div class="container mt-4 text-center">
+                        
+                        <h1 class="display-4">Hello, looks like your new here!</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <p class="lead">
+                        <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="container  p-5">
+        <div class="row">
+
+            <div class="card-deck mb-lg-2">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card mb-sm-5">
+                        <img class="card-img-top" src="~/images/fjord.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <img class="card-img-top" src="~/images/road.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="~/images/islands.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+                        <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- <div class="col-sm-6">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        </div>
+        <div class="row m-sm-4 mt-md-0 pb-5">
+            <div class="col-sm-12 col-md-8 text-sm-center text-md-left">
+                <h1 class="display-4">This is important</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id faucibus justo. Vestibulum malesuada mattis convallis. In vitae nisl aliquam, feugiat arcu at, efficitur nisl. Aenean ornare ex elit, id commodo nulla posuere vitae</p>
+                <p class="lead">
+                <a tabindex="0" class="btn btn-primary btn-lg" href="#" role="button" data-toggle="popover" data-placement="right" data-trigger="focus" title="Not just yet..." data-content="The Stem Bowl hasn't quite started yet, check back again in a few weeks">Make a team</a>
+                </p>
+            </div>
+            <div class="col-sm-112 col-md-4 col-lg-4 m-auto text-center justify-content-center pt-4 mt-sm-4">
+                <h3 class="mb-4">Widget Menu</h3>
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">test2</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
 @section Scripts
 {
     <script>
     $(document).ready(function() {
+
+        $('.col-sm-12').hover(
+        // trigger when mouse hover
+        function(){
+            $(this).children('.card').animate({
+                marginTop: "-=1%",
+            },200);
+        },
+
+        // trigger when mouse out
+        function(){
+            $(this).children('.card').animate({
+                marginTop: "0%"
+            },200);
+        }
+        );
+    
+         
+
         $(function () {
-  $('[data-toggle="popover"]').popover()
-});
-    });
+            $('[data-toggle="popover"]').popover()
+            });
+        });
     </script>
 }

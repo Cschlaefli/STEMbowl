@@ -1,9 +1,15 @@
 ﻿@{
     ViewData["Title"] = "About";
+    ViewData["Message"] = "StemBowl Webapp built in C# with the ASP.NET Core MVC RazorPages";
 }
-<div class="container mt-4">
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["Message"]</h3>
-    <p>Use this area to provide additional information.</p>
+<div class="jumbotron-fluid" id="site-content">
+    <div class="container-fluid d-flex" style="background-image: radial-gradient(#2193b0, #6dd5ed); width: 100vw; height: 50vh; align-items: center;">
+        <div class="container text-center">  
+            <h1 class="display-4">@ViewData["Title"]</h1>
+            <p class="lead">@ViewData["Message"]</p>
+            <hr class="my-4">
+            <p class="lead pb-4">Proudly brought to you by the ComputerScienceClub</p>
+        </div>
+    </div>
 </div>
 

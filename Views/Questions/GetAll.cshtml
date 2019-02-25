@@ -4,7 +4,9 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <hr />
-
+<div class="jumbrotron-fluid p-5" id="site-content">
+    <div class="container-fluid">
+<div class="container-fluid mt-4">
     <div class="row">
         <div class="col-2 border-right btn-primary" id="submitter-sort">Submitter</div>
         <div class="col-2 border-right btn-secondary disabled">Question</div>
@@ -90,6 +92,9 @@
         </div>
     </div>
 }
+</div>
+</div>
+</div>
 </div>
 <!-- @Html.ActionLink("Create", "Create", new { userID=@UserManager.GetUserId(User)}, new { @class="btn btn-primary mt-4" })-->
 @section Scripts

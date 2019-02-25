@@ -8,54 +8,33 @@
 @if(SignInManager.IsSignedIn(User))
 {
 
-    var currentUser = await UserManager.GetUserAsync(User);
-    var isAdmin = await UserManager.IsInRoleAsync(
-            currentUser,
-            "Admin");
-    var isGrader = await UserManager.IsInRoleAsync(
-        currentUser,
-        "Grader");
-    var isFaculty = await UserManager.IsInRoleAsync(
-            currentUser,
-            "Faculty");
-    var isStudent = await UserManager.IsInRoleAsync(
-            currentUser,
-            "Student");
+    
 
     
         
-    if(isAdmin)
-    {
-        <form asp-area="Identity"
+    
+
+    <form asp-area="Identity"
         asp-page="/Account/Logout"
         asp-route-returnUrl="@Url.Page("/")"
         method="post" id="logoutForm" class="navbar-right form-inline">
             <ul class="navbar-nav">
                 <li class="navbar-item">
-                    <div class="dropdown show">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Admin Menu
+                    <div class="dropdown-show">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hello @UserManager.GetUserName(User)
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdownMenuLink">
+                            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    Manage account
                             </a>
-                    
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" asp-controller="ManageUsers" asp-action="Index">Manage Users</a>
-                                <a class="dropdown-item" asp-controller="Questions" asp-action="Index">Submit Questions</a>
-                                <a class="dropdown-item" asp-controller="Questions" asp-action="GetAll">Manage Questions</a>
-                                <a class="dropdown-item" asp-controller="Round" asp-action="Index">Manage Round</a>  
-                            </div>
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </div>
                     </div>
-                        </li>
-                        <li class="navbar-item">
-                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                                Hello @UserManager.GetUserName(User)
-                            </a>
-                        </li>
-                        <li class="navbar-item">
-                            <button type="submit" class="btn btn-link navbar-btn nav-link float-right">Logout</button>
-                        </li>
+                </li>
+                        
                     </ul>  
-            </form>   
-    } 
+    </form> 
             
            
             

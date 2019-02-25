@@ -4,143 +4,147 @@
 }
 
 <hr \>
-<h2>@ViewData["Title"]</h2>
+<div class="jumbrotron-fluid p-5" id="site-content">
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
 
-<h3>Administrators</h3>
+        <h3>Administrators</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Email</td>
-        </tr>
-    </thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
 
-    @foreach (var user in Model.Administrators)
-    {
-        <tr>
-            <td>@user.Id</td>
-            <td>@user.Email</td>
-            <td>
-            <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#admin-remove-@user.Id">
-            Remove from Administrators
-            </button> 
-            </td>
-  
-            <div class="modal fade" id="admin-remove-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Are you sure you want remove @user.UserName from Administrators
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Nevermind
-                    </button>
-                        @Html.ActionLink("Remove", "RemoveRole", new { userID=@user.Id , role="Admin" }, new {@class="btn btn-danger"})
-                  </div>
-                </div>
-              </div>
-            </div> 
-        </tr>
-    }
-</table>
+            @foreach (var user in Model.Administrators)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td>
+                    <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#admin-remove-@user.Id">
+                    Remove from Administrators
+                    </button> 
+                    </td>
+          
+                    <div class="modal fade" id="admin-remove-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want remove @user.UserName from Administrators
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Nevermind
+                            </button>
+                                @Html.ActionLink("Remove", "RemoveRole", new { userID=@user.Id , role="Admin" }, new {@class="btn btn-danger"})
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                </tr>
+            }
+        </table>
 
-<h3>Faculty</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Email</td>
-        </tr>
-    </thead>
+        <h3>Faculty</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
 
-    @foreach (var user in Model.Faculty)
-    {
-        <tr>
-            <td>@user.Id</td>
-            <td>@user.Email</td>
-            <td>
-            <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#faculty-remove-@user.Id">
-            Remove from Faculty
-            </button> 
-            </td>
-            <div class="modal fade" id="faculty-remove-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Are you sure you want remove @user.UserName from Faculty
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Nevermind
-                    </button>
-                       @Html.ActionLink("Remove", "RemoveRole", new { userID=@user.Id , role="Faculty" }, new {@class="btn btn-danger"})
-                  </div>
-                </div>
-              </div>
-            </div> 
-        </tr>
-    }
-</table>
+            @foreach (var user in Model.Faculty)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td>
+                    <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#faculty-remove-@user.Id">
+                    Remove from Faculty
+                    </button> 
+                    </td>
+                    <div class="modal fade" id="faculty-remove-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want remove @user.UserName from Faculty
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Nevermind
+                            </button>
+                              @Html.ActionLink("Remove", "RemoveRole", new { userID=@user.Id , role="Faculty" }, new {@class="btn btn-danger"})
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                </tr>
+            }
+        </table>
 
 
-<h3>Everyone</h3>
+        <h3>Everyone</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Email</td>
-        </tr>
-    </thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
 
-    @foreach (var user in Model.Everyone)
-    {
-        <tr>
-            <td>@user.Id</td>
-            <td>@user.Email</td>
-            <td>@Html.ActionLink("Add To Administrators", "AddRole", new { userID=@user.Id , role="Admin" }, new { @class="btn btn-success float-right"})</td>
-            <td>@Html.ActionLink("Add To Faculty", "AddRole", new { userID=@user.Id , role="Faculty" }, new { @class="btn btn-success float-right"})</td>
-          <td>
-          <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#m-@user.Id">
-          Delete User
-          </button> 
-          </td>
-  
-            <div class="modal fade" id="m-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Are you sure you want to delete the user @user.UserName
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Nevermind
-                    </button>
-                    @Html.ActionLink("Delete User", "DeleteUser", new { userID=@user.Id }, new { @class="btn btn-danger"})
-                  </div>
-                </div>
-              </div>
-            </div> 
-        </tr>
-    }
-</table>
+            @foreach (var user in Model.Everyone)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td>@Html.ActionLink("Add To Administrators", "AddRole", new { userID=@user.Id , role="Admin" }, new { @class="btn btn-success float-right"})</td>
+                    <td>@Html.ActionLink("Add To Faculty", "AddRole", new { userID=@user.Id , role="Faculty" }, new { @class="btn btn-success float-right"})</td>
+                  <td>
+                  <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#m-@user.Id">
+                  Delete User
+                  </button> 
+                  </td>
+          
+                    <div class="modal fade" id="m-@user.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want to delete the user @user.UserName
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Nevermind
+                            </button>
+                            @Html.ActionLink("Delete User", "DeleteUser", new { userID=@user.Id }, new { @class="btn btn-danger"})
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+// Variable overrides
+$theme-colors: (
+    "primary": #0f4980
+    
+);
+
+$type-scales : (
+  minor-second: 1.067,
+  major-second: 1.125,
+  minor-third: 1.200,
+  major-third: 1.250,
+  perfect-fourth: 1.333,
+  augmented-fourth: 1.414,
+  perfect-fifth: 1.500,
+  golden-ratio: 1.618
+);
+
+
+
+html {
+    font-size: 14px;
+    @media (min-width: 768px) {
+        font-size: 16px;
+    }
+    @media (min-width: 992px) {
+        font-size: 18px;
+    }
+}
+
+$heading-type-scale-base : minor-third;
+$display-type-scale-base : minor-third;
+
+// Bootstrap sass
+@import "lib/bootstrap/scss/bootstrap";

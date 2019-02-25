@@ -7,7 +7,8 @@
     <link rel="icon" href="~/favicon.ico">
     <environment include="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/scss/styles.css" />
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet"
@@ -24,7 +25,7 @@
     
     
     <div class="container">
-    <nav class="navbar navbar-dark navbar-expand-lg  fixed-top" style="background-color: #4caf50">
+        <nav class="navbar navbar-dark navbar-expand-lg  fixed-top" style="background-color: #24292e" id="nav">
             
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Stem Bowl</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-layout" aria-controls="navbar-layout" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,29 +39,141 @@
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                    <partial name="_FacultyPartial"/>
+                    <partial name="_AdminPartial"/>
                     <partial name="_LoginPartial"/>
+                    
             </div>
-    </nav>
+        </nav>
     </div>
 
     
         @RenderBody()
     
 
-        <footer>
-            <div class="container">
-                <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-bottom">
-                    <a class="navbar-brand" href="#">Change this to credit and link to cade</a>
-                </nav>
+        <footer class="page-footer font-small" style="background-color: #24292e" id="site-footer">
+            <div class="container-fluid pt-5" id="footer-image">
+                <div class="container-fluid p-5">
+            
+                    <div class="row text-white text-center">
+                        <div class="col-md-4 mb-md-0 mb-3 text-center">
+                            <h5 class="text-uppercase">Contact Info</h5>
+                            <hr class="clearfix w-25 pb-3">
+                            <ul class="list-unstyled">
+                            <li>
+                                <p><i class="far fa-address-card"></i>  lorem ipsum</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-at"></i>  Lorem Ipsum</p>
+                            </li>
+                            
+                            </ul>
+                        </div>
+                        
+                    <hr class="clearfix w-100 d-md-none pb-3">
+                        <div class="col-md-4 mt-md-0 mt-3 mb-3">
+                            <h5 class="text-uppercase">Footer Content</h5>
+                            <hr class="clearfix w-50 pb-3">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id faucibus justo. Vestibulum malesuada mattis convallis. In vitae nisl aliquam, feugiat arcu at, efficitur nisl. </p>
+                        </div>
+                    <hr class="clearfix w-100 d-md-none pb-3">
+                    <div class="col-md-4 mb-md-0 mb-3 text-center">
+
+                        <!-- Links -->
+                        <h5 class="text-uppercase">Links</h5>
+                        <hr class="clearfix w-25">
+                        <ul class="list-unstyled">
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </div>
             </div>
+
+                
+                </div>
+            <div class="footer-copyright text-center py-3 text-muted container-fluid" style="background-color: #000000">&copy; copyright 
+                    <a class="navbar-brand" href="#">ComputerScienceClub</a>
+                </div>
         </footer>
     
     <environment include="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="~/lib/popper.js/dist/umd/popper.min.js"></script>
         <script src="~/lib/jquery/dist/jquery.slim.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/lib/popper.js/dist/popper.js"></script>
+        <script>
+            $(document).ready(function() {
+	
+                // INITIATE THE FOOTER
+                siteFooter();
+                // COULD BE SIMPLIFIED FOR THIS PEN BUT I WANT TO MAKE IT AS EASY TO PUT INTO YOUR SITE AS POSSIBLE
+                $(window).resize(function() {
+                    siteFooter();
+                });
+                
+                function siteFooter() {
+                    var siteContent = $('#site-content');
+                    var siteContentHeight = siteContent.height();
+                    var siteContentWidth = siteContent.width();
+
+                    var siteFooter = $('#site-footer');
+                    var siteFooterHeight = siteFooter.height();
+                    var siteFooterWidth = siteFooter.width();
+
+                    console.log('Content Height = ' + siteContentHeight + 'px');
+                    console.log('Content Width = ' + siteContentWidth + 'px');
+                    console.log('Footer Height = ' + siteFooterHeight + 'px');
+                    console.log('Footer Width = ' + siteFooterWidth + 'px');
+
+                    siteContent.css({
+                        "margin-bottom" : siteFooterHeight - 25
+                    });
+                };
+
+                
+            });
+        </script>
+        <script>
+        // script to make navbar slide in and out on scroll
+        
+        if ( $(window).width() > 769) {   
+        var mywindow = $(window);
+        var mypos = mywindow.scrollTop();
+        var up = false;
+        var newscroll;
+        mywindow.scroll(function () {
+            newscroll = mywindow.scrollTop();
+            if (newscroll > mypos && !up) {
+                $('#nav').finish().slideUp(400);
+                up = !up;
+                console.log(up);
+            } else if(newscroll < mypos && up) {
+                $('#nav').finish().slideDown(300);
+                up = !up;
+            }
+            mypos = newscroll;
+        });
+        }
+        
+
+
+            $(document).ready(
+                function () {
+                    $("#test").hover(
+                    function () {
+                    $(this).children('.dropdown-show').finish().slideDown('medium');
+                    }, 
+                function () {
+                    $(this).children('.dropdown-show').finish().slideUp('medium');
+                    }
+                )});
+        </script>
+        
 
     </environment>
     <environment exclude="Development">

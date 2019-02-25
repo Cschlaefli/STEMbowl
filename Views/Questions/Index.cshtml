@@ -4,74 +4,75 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <hr />
-
-    <div class="row">
-        <div class="col-2 border-right btn-secondary disabled">Question</div>
-        <div class="col-2 border-right btn-primary" id="format-sort">Format</div>
-        <div class="col-2 border-right btn-primary" id="category-sort">Category</div>
-        <div class="col btn-secondary disabled"></div>
+<div class="jumbrotron-fluid p-5" id="site-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-2 border-right btn-secondary disabled">Question</div>
+            <div class="col-2 border-right btn-primary" id="format-sort">Format</div>
+            <div class="col-2 border-right btn-primary" id="category-sort">Category</div>
+            <div class="col btn-secondary disabled"></div>
+        </div>
+        <br />
+    <div id="questions">
+    @foreach(var question in Model)
+    {
+        <div class="row questions border-top" data-format=@question.Format data-category=@question.Category>
+            @Html.HiddenFor(q => question.QuestionID)
+            @Html.HiddenFor(q => question.SubmitterID) 
+            <div class="col-2 border-right">
+                @question.Text
+            </div>
+            <div class="col-2">
+                @switch(question.Format)
+                {
+                    case Format.MultipleChoice: <span>Multiple Choice</span>
+                    break;
+                    case Format.TrueFalse: <span>True/False</span>
+                    break;
+                    case Format.ShortAnswer: <span>Short Answer</span>
+                    break;
+                    default: <span> Invalid/Format</span>
+                    break;
+                }
+            </div>
+            <div class="col-2">
+                @question.Category
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#m-@question.QuestionID">
+              Delete
+              </button> 
+      
+                <div class="modal fade" id="m-@question.QuestionID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          Are you sure you want to delete this quesion?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
+                        @Html.ActionLink("Delete", "Delete", new { questionId=@question.QuestionID}, new {@class="btn btn-danger" })
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              <!-- 
+              not gonna implement this,inteface would be a nightmare
+                @Html.ActionLink("Edit", "Edit", new { questionId=@question.QuestionID}, new {@class="btn btn-warning btn-sm float-right mr-2" })
+              --> 
+            </div>
+        </div>
+    }
     </div>
-    <br />
-<div id="questions">
-@foreach(var question in Model)
-{
-    <div class="row questions border-top" data-format=@question.Format data-category=@question.Category>
-        @Html.HiddenFor(q => question.QuestionID)
-        @Html.HiddenFor(q => question.SubmitterID) 
-        <div class="col-2 border-right">
-            @question.Text
-        </div>
-        <div class="col-2">
-            @switch(question.Format)
-            {
-                case Format.MultipleChoice: <span>Multiple Choice</span>
-                break;
-                case Format.TrueFalse: <span>True/False</span>
-                break;
-                case Format.ShortAnswer: <span>Short Answer</span>
-                break;
-                default: <span> Invalid/Format</span>
-                break;
-            }
-        </div>
-        <div class="col-2">
-            @question.Category
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#m-@question.QuestionID">
-          Delete
-          </button> 
-  
-            <div class="modal fade" id="m-@question.QuestionID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                      Are you sure you want to delete this quesion?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nevermind</button>
-                    @Html.ActionLink("Delete", "Delete", new { questionId=@question.QuestionID}, new {@class="btn btn-danger" })
-                  </div>
-                </div>
-              </div>
-            </div> 
-           <!-- 
-           not gonna implement this,inteface would be a nightmare
-            @Html.ActionLink("Edit", "Edit", new { questionId=@question.QuestionID}, new {@class="btn btn-warning btn-sm float-right mr-2" })
-           --> 
-        </div>
-    </div>
-}
-</div>
-
 @Html.ActionLink("Create", "Create", new { userID=@UserManager.GetUserId(User)}, new { @class="btn btn-primary mt-4" })
-
+</div>
+</div>
 @section Scripts
 {
     <script>
