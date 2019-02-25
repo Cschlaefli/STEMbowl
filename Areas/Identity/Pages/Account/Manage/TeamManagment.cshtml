@@ -4,7 +4,7 @@
     ViewData["Title"] = "Team Managment";
     ViewData["ActivePage"] = ManageNavPages.TeamManagment;
 }
-<hr />
+<div class="jumbrotron-fluid p-5" id="site-content">
 <h4>@ViewData["Title"]</h4>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -21,6 +21,7 @@
         <button class="btn btn-danger">Quit Team</button>
     </form>
     </div>
+</div>
 </div>
 
 @section Scripts {
